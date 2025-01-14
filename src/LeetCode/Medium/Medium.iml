@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../Algorithm/LeetCode/Medium">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../Algorithm/LeetCode/Medium/0002-add-two-numbers" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../../Algorithm/LeetCode/Medium/0012-integer-to-roman" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../../Algorithm/LeetCode/Medium/0235-lowest-common-ancestor-of-a-binary-search-tree" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../../Algorithm/LeetCode/Medium/0622-design-circular-queue" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
