@@ -3,25 +3,32 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        q = []
-        a = 0
-        b = 0
-        
-        while a < m and b < n:
+        c = m + n - 1
+        a = m - 1
+        b = n - 1
+
+        while a >= 0 and b >= 0:
             na = nums1[a]
             nb = nums2[b]
+            nc = nums1[c]
 
-            if na <= nb:
-                q.append(na)
-                a += 1
+            if nb >= na:
+                nums1[c] = nb
+                b -= 1
+                c -= 1
             else:
-                q.append(nb)
-                b += 1
-        if a < m:
-            for i in range(a, m):
-                q.append(nums1[i])
-        if b < n:
-            for i in range(b, n):
-                q.append(nums2[i])
-        for i in range(len(q)):
-            nums1[i] = q[i]
+                nums1[c] = na
+                nums1[a] = nc
+                a -= 1
+                c -= 1
+
+            # print(f"{na,nc,nb=} {c=}")
+            # print(nums1, a)
+            # print(nums2, b)
+        
+        while b >= 0:
+            nums1[c] = nums2[b]
+            c -= 1
+            b -= 1
+
+
