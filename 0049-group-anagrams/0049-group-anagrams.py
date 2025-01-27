@@ -4,7 +4,7 @@ class Solution:
             key_list = [0 for _ in range(26)]
             for i in range(len(word)):
                 key_list[ord(word[i]) % 26] += 1
-            return ",".join(str(k) for k in key_list)
+            return tuple(key_list)
 
 
         ret = defaultdict(list)
