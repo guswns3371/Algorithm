@@ -7,7 +7,8 @@ dy = [1, -1, 0, 0]
 def solution(land):
     def bfs(x, y, visited):
         visited[x][y] = 1
-        history = [[x, y]]
+        sichu_locations = {y}
+        amount = 1
         q = deque([[x, y]])
 
         while q:
@@ -17,36 +18,22 @@ def solution(land):
                 yy = qy + dy[i]
                 if 0 <= xx < n and 0 <= yy < m:
                     if land[xx][yy] == 1 and visited[xx][yy] == 0:
-                        history.append([xx, yy])
                         q.append([xx, yy])
                         visited[xx][yy] = 1
-        return history
+                        amount += 1
+                        sichu_locations.add(yy)
+
+        for sichu_location in sichu_locations:
+            oils[sichu_location] += amount
 
     n = len(land)
     m = len(land[0])
-    oil_type = -1
-    oil_val_map = {0: 0}
+    oils = [0] * m
 
-    # mark land
     visited = [[0 for _ in range(m)] for _ in range(n)]
     for y in range(m):
         for x in range(n):
             if land[x][y] == 1 and visited[x][y] == 0:
-                routes = bfs(x, y, visited)
-                amount = len(routes)
-                if oil_type not in oil_val_map:
-                    oil_val_map[oil_type] = amount
+                bfs(x, y, visited)
 
-                for rx, ry in routes:
-                    land[rx][ry] = oil_type
-                oil_type -= 1
-
-    answer = 0
-    for i in range(m):
-        total_oil_type = set()
-        for j in range(n):
-            cur_oil_type = land[j][i]
-            total_oil_type.add(cur_oil_type)
-        answer = max(answer, sum(oil_val_map[t] for t in total_oil_type))
-
-    return answer
+    return max(oils)
