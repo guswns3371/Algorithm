@@ -1,13 +1,12 @@
 class Solution:
     def simplifyPath(self, path: str) -> str:
-        directories = [p for p in path.split("/") if p]
         q = []
-        for directory in directories:
+        for directory in path.split("/"):
             if directory == ".":
-                continue
-            if directory == "..":
+                pass
+            elif directory == "..":
                 if q:
                     q.pop()
-                continue
-            q.append(directory)
+            elif directory != "":
+                q.append(directory)
         return "/" + "/".join(q)
